@@ -4,12 +4,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-public class Users {
+public class Users  implements Serializable {
     private int id;
     private String email;
     private String password;
@@ -28,7 +29,7 @@ public class Users {
     public void setId(int id) {
         this.id = id;
     }
-
+    @Column(unique = true)
     public String getEmail() {
         return email;
     }
