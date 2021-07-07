@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MainController {
+
+
     @GetMapping("/index")
     public String index() {
         return "index";
@@ -24,4 +26,5 @@ public class MainController {
     public String deni(){
         return "access";
     }
+
 }

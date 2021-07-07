@@ -8,7 +8,10 @@
     <title>Document</title>
 </head>
 <body class="container">
-<div th:replace="header"> </div>
-<h2 style="color:green" th:field="*{message}" th:text="${message}"></h2>
+<div th:replace="header"></div>
+<form  class="form-group col-6" enctype="multipart/form-data" action="#" th:action="@{addCategory}" th:method="post">
+    category:<input class="form-control" type="text" name="category"><br>
+    <input class="btn btn-primary" type="submit">
+</form>
 </body>
 </html>

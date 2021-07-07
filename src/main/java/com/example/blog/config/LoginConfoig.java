@@ -26,7 +26,7 @@ public class LoginConfoig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/","/index","/user/register","/user/add","/user/alert")
-                .permitAll().and().authorizeRequests().antMatchers("/user/show").hasAuthority("ADMIN").anyRequest().authenticated().and()
+                .permitAll().and().authorizeRequests().antMatchers("/user/show", "/category").hasAuthority("ADMIN").anyRequest().authenticated().and()
                 .exceptionHandling().accessDeniedPage("/deni").
                 and().formLogin().loginPage("/login").usernameParameter("email").passwordParameter("password").permitAll().and().logout().permitAll();
     }

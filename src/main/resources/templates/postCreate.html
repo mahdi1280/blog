@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body class="container">
+<div th:replace="header"></div>
+<form  class="form-group col-6" enctype="multipart/form-data" action="#" th:action="@{add}" th:method="post">
+    title:<input class="form-control" type="text" name="title"><br>
+    body:<textarea name="body"></textarea><br>
+    email: <input class="form-control" type="email" name="email"><br>
+    image: <input class="form-control" type="file" name="file"><br>
+    <div class="form-group row">
+        <label class="col-form-label col-sm-3" for="cat">
+            categories:
+        </label>
+        <div class="col-sm-9">
+            <select id="cat" name="roles">
+                <option th:each="category : ${categories}" th:text="${category.getTitle()}" th:value="${category.getTitle()}"></option>
+            </select>
+        </div>
+    </div>s
+    <input class="btn btn-primary" type="submit">
+</form>
+</body>
+</html>
