@@ -1,6 +1,7 @@
 package com.example.blog.model.dto;
 
 import com.example.blog.model.entity.Posts;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,6 +12,15 @@ public class UserDTO {
     private String email;
     private String password;
     private String name;
+    private MultipartFile file;
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 
     public String getEmail() {
         return email;

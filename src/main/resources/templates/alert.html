@@ -9,15 +9,6 @@
 </head>
 <body>
 <div th:replace="header"> </div>
-<div>
-    <h1>Login</h1>
-    <form enctype="multipart/form-data" action="#" th:action="@{add}" th:method="post">
-        userNmame:<input type="text" name="name"><br>
-        password:<input type="text" name="password"><br>
-       email: <input type="text" name="email"><br>
-        image: <input type="file" name="file"><br>
-        <input type="submit">
-    </form>
-</div>
+<h2 style="color:green" th:field="*{message}" th:text="${message}"></h2>
 </body>
 </html>

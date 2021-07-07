@@ -5,7 +5,10 @@ import com.example.blog.model.entity.Users;
 import com.example.blog.service.UserService;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/user")
@@ -20,7 +23,9 @@ public class UserController {
         return "RegisterUser";
     }
     @PostMapping(value = "/add")
-    public Users add(@RequestBody UserDTO userDTO){
-        return userService.add(userDTO);
+    public String add(@ModelAttribute UserDTO userDTO, Model model) throws IOException {
+        userService.add(userDTO);
+        model.addAttribute("message" , "با موفقيت اطلاعات ذخيره شد");
+        return "alert";
     }
 }
