@@ -7,16 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body class="container">
 <div th:replace="header"> </div>
 <div>
     <h1>Login</h1>
-    <form enctype="multipart/form-data" action="#" th:action="@{add}" th:method="post">
-        userNmame:<input type="text" name="name"><br>
-        password:<input type="text" name="password"><br>
-       email: <input type="text" name="email"><br>
-        image: <input type="file" name="file"><br>
-        <input type="submit">
+    <form  class="form-group col-6" enctype="multipart/form-data" action="#" th:action="@{add}" th:method="post">
+        userNmame:<input class="form-control" type="text" name="name"><br>
+        password:<input class="form-control" type="text" name="password"><br>
+       email: <input class="form-control" type="text" name="email"><br>
+        image: <input class="form-control" type="file" name="file"><br>
+        <input class="btn btn-primary" type="submit">
     </form>
 </div>
 </body>
