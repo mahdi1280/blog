@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Category {
@@ -12,6 +14,7 @@ public class Category {
     private String title;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+    private Collection<Posts> posts = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,5 +50,17 @@ public class Category {
 
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "PostsCategory"
+    ,joinColumns = @JoinColumn(name = "category_id"),
+    inverseJoinColumns = @JoinColumn(name = "post_id"))
+    public Collection<Posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Collection<Posts> posts) {
+        this.posts = posts;
     }
 }

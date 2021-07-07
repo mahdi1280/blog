@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Users {
@@ -15,6 +17,7 @@ public class Users {
     private String cover;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+    private Collection<Posts> posts= new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,5 +77,14 @@ public class Users {
 
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    public Collection<Posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Collection<Posts> posts) {
+        this.posts = posts;
     }
 }
