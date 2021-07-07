@@ -1,5 +1,6 @@
 package com.example.blog.model.entity;
 
+import com.example.blog.enums.Roles;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,9 +17,11 @@ public class Users  implements Serializable {
     private String password;
     private String name;
     private String cover;
+    private boolean enable = true;
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private Collection<Posts> posts= new ArrayList<>();
+    private Collection<Roles> roles = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,5 +90,25 @@ public class Users  implements Serializable {
 
     public void setPosts(Collection<Posts> posts) {
         this.posts = posts;
+    }
+
+    @Column(columnDefinition = "boolean default true")
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    @ElementCollection(targetClass = Roles.class)
+    @CollectionTable(name = "authorities" , joinColumns = @JoinColumn(name = "email" , referencedColumnName = "email"))
+    @Enumerated(value = EnumType.STRING)
+    public Collection<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Roles> roles) {
+        this.roles = roles;
     }
 }

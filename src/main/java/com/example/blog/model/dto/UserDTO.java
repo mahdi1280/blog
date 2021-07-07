@@ -1,5 +1,6 @@
 package com.example.blog.model.dto;
 
+import com.example.blog.enums.Roles;
 import com.example.blog.model.entity.Posts;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +14,15 @@ public class UserDTO {
     private String password;
     private String name;
     private MultipartFile file;
+    private Roles roles;
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
 
     public MultipartFile getFile() {
         return file;

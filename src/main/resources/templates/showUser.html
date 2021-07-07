@@ -14,6 +14,7 @@
         <th>id</th>
         <th>username</th>
         <th>email</th>
+        <td>Roles</td>
         <th>CreatedAt</th>
         <th>UpdatedAt</th>
         <th>img</th>
@@ -22,6 +23,7 @@
         <td th:text="${user.getId()}">
         </td><td th:text="${user.getName()}"></td>
         </td><td th:text="${user.getEmail()}"></td>
+        </td><td th:text="${user.getRoles()}"></td>
         </td><td th:text="${#temporals.format(user.getCreatedAt() , 'yyyy-MM-dd HH:mm')}"></td>
         </td><td th:text="${#temporals.format(user.getUpdatedAt() , 'yyyy-MM-dd HH:mm')}"></td>
         </td><td><img style="width: 100px;height: 100px;" th:src="'/image/'+${user.getCover()}"></td>

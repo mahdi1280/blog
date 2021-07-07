@@ -5,6 +5,7 @@ import com.example.blog.model.dto.UserDTO;
 import com.example.blog.model.entity.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -21,17 +22,22 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+
     }
+
     public Users add(UserDTO userDTO) throws IOException {
         Users users = new Users();
         users.setEmail(userDTO.getEmail());
-        users.setPassword(userDTO.getPassword());
+        users.setPassword(new BCryptPasswordEncoder().encode(userDTO.getPassword()));
         users.setName(userDTO.getName());
         String path = ResourceUtils.getFile("classpath:static/image").getAbsolutePath();
         String name = UUID.randomUUID()+"." + Objects.requireNonNull(userDTO.getFile().getContentType()).split("/")[1];
         byte[] bytes = userDTO.getFile().getBytes();
         Files.write(Paths.get(path + File.separator + name), bytes);
         users.setCover(name);
+
+       users.getRoles().add(userDTO.getRoles());
+
         return userRepository.save(users);
     }
     public Page<Users> show(Pageable pageable){
