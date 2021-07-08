@@ -5,6 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -16,7 +17,7 @@ public class Posts {
     private LocalDate createdAt;
     private LocalDate updatedAt;
     private Users users;
-    private Collection<Category> categories;
+    private Collection<Category> categories = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

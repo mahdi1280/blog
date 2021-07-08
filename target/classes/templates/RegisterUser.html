@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body class="container">
+<div th:replace="header"> </div>
+<div>
+    <h1>Login</h1>
+    <form  class="form-group col-6" enctype="multipart/form-data" action="#" th:action="@{add}" th:method="post">
+        userNmame:<input class="form-control" type="text" name="name"><br>
+        password:<input class="form-control" type="text" name="password"><br>
+       email: <input class="form-control" type="text" name="email"><br>
+        image: <input class="form-control" type="file" name="file"><br>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3" for="cat">
+                categories:
+            </label>
+            <div class="col-sm-9">
+                <select id="cat" name="roles">
+                    <option th:each="role : ${T(com.example.blog.enums.Roles).values()}" th:text="${role}" th:value="${role}"></option>
+
+                </select>
+            </div>
+
+        </div>
+        <input class="btn btn-primary" type="submit">
+    </form>
+</div>
+</body>
+</html>
